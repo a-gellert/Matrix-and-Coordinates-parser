@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace XY_ParserConsole
 {
@@ -9,11 +10,8 @@ namespace XY_ParserConsole
             int check = 0;
             int input;
 
-            String enteredStr;
-            String result;
+            String inputStr;
             String defaultInput = "23.8976,12.3218 25.76,11.9463 24.8293,12.2";
-
-            String[] subStr;
 
             char[] delimiterChars = { ' ', ',' };
 
@@ -25,9 +23,9 @@ namespace XY_ParserConsole
             do
             {
                 check = 0;
-                enteredStr = Console.ReadLine();
+                inputStr = Console.ReadLine();
 
-                if (Int32.TryParse(enteredStr, out input))
+                if (Int32.TryParse(inputStr, out input))
                 {
                     switch (input)
                     {
@@ -37,12 +35,10 @@ namespace XY_ParserConsole
                             Parsing(str);
                             break;
                         case 2:
-                            Console.WriteLine("2232");
                             Parsing(defaultInput);
                             break;
                         case 3:
-                            Console.WriteLine("3333");
-                            // result = DefaultValue();
+                            ReadFrom();
                             break;
                         default:
                             check = 1;
@@ -87,9 +83,17 @@ namespace XY_ParserConsole
 
             void ReadFrom()
             {
+                String path = "coord.txt";
+                String str;
+                {
+                    using (StreamReader sr = new StreamReader(path))
+                    {
+                        str = sr.ReadToEnd();
+                        Parsing(str);
+                    }
 
+                }
             }
-
         }
     }
 }
