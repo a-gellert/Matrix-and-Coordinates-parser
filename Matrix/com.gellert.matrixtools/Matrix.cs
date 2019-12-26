@@ -1,19 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MatrixTools.com.gellert.matrixtools
-{
+{   
+/// <summary>
+/// Клас для управленя матрицами
+/// </summary>
     class Matrix
-    {
+    {/// <summary>
+    ///Автоматические свойства
+    /// </summary>
         public int Row { get; set; }
-
         public int Column { get; set; }
 
         public int[,] MatrixTemp { get; }
-
+        /// <summary>
+        /// Контсруктор класса
+        /// </summary>
+        /// <param name="column"></param>
+        /// <param name="row"></param>
         public Matrix(int column, int row)
         {
             Row = row;
@@ -22,6 +26,9 @@ namespace MatrixTools.com.gellert.matrixtools
         }
 
         private static Random rand = new Random();
+        /// <summary>
+        /// Метод заполнения матрицы
+        /// </summary>
         public void FillMatrix()
         {
             for (int i = 0; i < Column; i++)
@@ -32,7 +39,12 @@ namespace MatrixTools.com.gellert.matrixtools
                 }
             }
         }
-
+        /// <summary>
+        /// Метод суммирования матриц
+        /// </summary>
+        /// <param name="matrixA"></param>
+        /// <param name="matrixB"></param>
+        /// <returns>Матрица или пустое значение</returns>
         public static Matrix SumMatrix(Matrix matrixA, Matrix matrixB)
         {
             if (matrixA.Column == matrixB.Column && matrixA.Row == matrixB.Row)
@@ -54,7 +66,12 @@ namespace MatrixTools.com.gellert.matrixtools
             }
 
         }
-
+        /// <summary>
+        /// Метод перемножения матриц
+        /// </summary>
+        /// <param name="matrixA"></param>
+        /// <param name="matrixB"></param>
+        /// <returns>Матрица или пустое значение</returns>
         public static Matrix MultiplyMatrix(Matrix matrixA, Matrix matrixB)
         {
             if (matrixA.Column == matrixB.Column && matrixA.Row == matrixB.Row)
@@ -75,6 +92,10 @@ namespace MatrixTools.com.gellert.matrixtools
                 return null;
             }
         }
+        /// <summary>
+        /// Метод вывода матрицы на консоль
+        /// </summary>
+        /// <param name="matrix"></param>
         public static void ShowMatrix(Matrix matrix)
         {
             if (matrix != null)

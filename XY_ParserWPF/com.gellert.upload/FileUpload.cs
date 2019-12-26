@@ -7,12 +7,18 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using XY_ParserWPF;
 
-
+/// <summary>
+/// Класс для загрузки тестового файла
+/// </summary>
 namespace XY_ParserWPF.com.gellert.upload
 {
     class FileUpload
     {
-
+        /// <summary>
+        /// Метод для чтения данных из файла и записи в поля
+        /// </summary>
+        /// <param name="button"></param>
+        /// <param name="textBox"></param>
         public static void ReadFrom(Button button, TextBox textBox)
         {
             Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog();
@@ -22,7 +28,7 @@ namespace XY_ParserWPF.com.gellert.upload
             if (result == true)
             {
                 button.Content = openFileDlg.FileName;
-                textBox.Text = System.IO.File.ReadAllText(openFileDlg.FileName);
+                textBox.Text = File.ReadAllText(openFileDlg.FileName);
             }
 
         }

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XY_ParserConsole</name>
+    </assembly>
+    <members>
+        <member name="M:XY_ParserConsole.Program.Main(System.String[])">
+            <summary>
+            Приложение для парсинга координат из текстового формата в тип decimal
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:XY_ParserConsole.Program.Parsing(System.String,System.Char[])">
+            <summary>
+            Метод для парсинга координат
+            </summary>
+            <param name="str"></param>
+            <param name="delimiterChars"></param>
+        </member>
+        <member name="M:XY_ParserConsole.Program.ReadFrom(System.Char[])">
+            <summary>
+            Метод чтения значений из файла
+            </summary>
+            <param name="delimiterChars"></param>
+        </member>
+    </members>
+</doc>

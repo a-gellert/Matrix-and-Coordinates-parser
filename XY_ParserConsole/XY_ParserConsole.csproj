@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\Admin\source\repos\Task_1\XY_ParserConsole\XY_ParserConsole.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>

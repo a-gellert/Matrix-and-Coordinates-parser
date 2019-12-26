@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace XY_ParserWPF.com.gellert.parsing
-{
+{/// <summary>
+/// Класс для парсинга координат
+/// </summary>
     class Parser
     {
         private static readonly char[] delimiterChars = { ',', ' ' };
-
+        /// <summary>
+        /// Метод для парсинга данных в тип decimal
+        /// </summary>
+        /// <param name="textInput"></param>
+        /// <param name="textOutput"></param>
         public static void Parsing(TextBox textInput, TextBox textOutput)
         {
             string str = textInput.Text;

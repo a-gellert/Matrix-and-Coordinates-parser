@@ -60,7 +60,11 @@ namespace XY_ParserConsole
 
             Console.ReadKey();
         }
-
+        /// <summary>
+        /// Метод для парсинга координат
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="delimiterChars"></param>
         private static void Parsing(string str, char[] delimiterChars)
         {
             string[] strCoords = str.Split(delimiterChars);
@@ -84,7 +88,10 @@ namespace XY_ParserConsole
                 }
             }
         }
-
+        /// <summary>
+        /// Метод чтения значений из файла
+        /// </summary>
+        /// <param name="delimiterChars"></param>
         private static void ReadFrom(char[] delimiterChars)
         {
             string path = "coord.txt";
