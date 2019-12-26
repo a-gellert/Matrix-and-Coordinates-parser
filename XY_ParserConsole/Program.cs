@@ -87,8 +87,8 @@ namespace XY_ParserConsole
 
         private static void ReadFrom(char[] delimiterChars)
         {
-            String path = "coord.txt";
-            String str;
+            string path = "coord.txt";
+            string str;
             {
                 using (StreamReader sr = new StreamReader(path))
                 {
