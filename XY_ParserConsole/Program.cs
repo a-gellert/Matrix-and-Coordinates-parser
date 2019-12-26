@@ -5,21 +5,25 @@ namespace XY_ParserConsole
 {
     class Program
     {
+    /// <summary>
+    /// Приложение для парсинга координат из текстового формата в тип decimal
+    /// </summary>
+    /// <param name="args"></param>
         static void Main(string[] args)
         {
             int check = 0;
             int input;
 
-            String inputStr;
-            String defaultInput = "23.8976,12.3218 25.76,11.9463 24.8293,12.2";
+            string inputStr;
+            string defaultInput = "23.8976, 12.3218, 25.76, 11.9463, 24.8293, 12.2";
 
-            char[] delimiterChars = { ' ', ',' };
+            char[] delimiterChars = {',',' '};
 
             Console.WriteLine("Выберите действие:\n" +
                 "1. Ввести данные вручную;\n" +
                 "2. Прочитать данные из файла\n" +
                 "3. Использовать значения по умолчанию.\n");
-
+            
             do
             {
                 check = 0;
@@ -31,14 +35,14 @@ namespace XY_ParserConsole
                     {
                         case 1:
                             Console.WriteLine("Введите данные:");
-                            String str = Console.ReadLine();
-                            Parsing(str);
+                            string str = Console.ReadLine();
+                            Parsing(str, delimiterChars);
                             break;
                         case 2:
-                            Parsing(defaultInput);
+                            Parsing(defaultInput, delimiterChars);
                             break;
                         case 3:
-                            ReadFrom();
+                            ReadFrom(delimiterChars);
                             break;
                         default:
                             check = 1;
@@ -55,44 +59,43 @@ namespace XY_ParserConsole
             while (check == 1);
 
             Console.ReadKey();
+        }
 
+        private static void Parsing(string str, char[] delimiterChars)
+        {
+            string[] strCoords = str.Split(delimiterChars);
+            decimal[] coordinates = new decimal[strCoords.Length];
 
-
-            void Parsing(String str)
+            for (int i = 0; i < strCoords.Length; i++)
             {
-                string[] coordinates = str.Split(delimiterChars);
-
-                for (int i = 0; i < coordinates.Length; i++)
-                {
-                    coordinates[i] = coordinates[i].Replace('.', ',');
-                }
-
-                for (int i = 0; i < coordinates.Length; i++)
-                {
-                    if ((i % 2) != 1)
-                    {
-                        Console.Write($"\nX:{coordinates[i]}; ");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Y:{coordinates[i]}");
-                    }
-                }
+                strCoords[i] = strCoords[i].Replace('.', ',');
+                coordinates[i] = decimal.Parse(strCoords[i]);
             }
 
-
-            void ReadFrom()
+            for (int i = 0; i < strCoords.Length; i++)
             {
-                String path = "coord.txt";
-                String str;
+                if ((i % 2) != 1)
                 {
-                    using (StreamReader sr = new StreamReader(path))
-                    {
-                        str = sr.ReadToEnd();
-                        Parsing(str);
-                    }
-
+                    Console.Write($"\nX:{coordinates[i]};");
                 }
+                else
+                {
+                    Console.Write($"\tY:{coordinates[i]}");
+                }
+            }
+        }
+
+        private static void ReadFrom(char[] delimiterChars)
+        {
+            String path = "coord.txt";
+            String str;
+            {
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    str = sr.ReadToEnd();
+                    Parsing(str, delimiterChars);
+                }
+
             }
         }
     }
